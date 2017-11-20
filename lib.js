@@ -2,7 +2,7 @@ const rotateContext = (context) => (degrees) => {
   context.rotate(degrees * Math.PI / 180)
 }
 
-const drawTriangleOnContext = (context, scaling) => {
+const drawTriangleOnContext = (context) => {
   const rotate = rotateContext(context)
 
   return (x, y, angle) => {
@@ -12,9 +12,9 @@ const drawTriangleOnContext = (context, scaling) => {
     context.save()
     rotate(angle)
     context.beginPath()
-    context.moveTo(scaling * (x + (base / 2)), scaling * (y + (height / 2)))
-    context.lineTo(scaling * x, scaling * (y - (height / 2)))
-    context.lineTo(scaling * (x - (base / 2)), scaling * (y + (height / 2)))
+    context.moveTo(x + (base / 2), y + (height / 2))
+    context.lineTo(x, y - (height / 2))
+    context.lineTo(x - (base / 2), y + (height / 2))
     context.fill()
     context.restore()
   }

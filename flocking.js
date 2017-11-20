@@ -4,11 +4,15 @@ function start() {
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
   const scaling = window.devicePixelRatio
-  
-  canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
 
-  const drawTriangle = drawTriangleOnContext(context, scaling)
+  canvas.width = window.innerWidth * scaling
+  canvas.height = window.innerHeight * scaling
+  context.scale(scaling, scaling)
+
+  canvas.style.width = window.innerWidth + 'px'
+  canvas.style.height = window.innerHeight + 'px'
+
+  const drawTriangle = drawTriangleOnContext(context)
 
   loop(drawTriangle)
 }
