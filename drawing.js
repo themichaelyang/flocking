@@ -1,3 +1,9 @@
+class Drawing {
+  constructor() {
+
+  }
+}
+
 const print = (obj) => console.log(obj)
 
 const rotateContext = (context) => (degrees) => {
@@ -13,13 +19,14 @@ const drawTriangleOnContext = (context) => {
   const translate = translateContext(context)
 
   return (x, y, angle) => {
-    const height = 10
+    const height = 20
     const base = 10
 
     context.save()
 
     translate(x, y)
     rotate(angle)
+    rotate(90)
 
     context.beginPath()
     context.moveTo(base / 2, height / 2)
