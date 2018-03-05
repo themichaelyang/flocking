@@ -25,9 +25,9 @@ class Vehicle {
         count++
 
         // improve efficiency in crowd
-        // if (count > 30) {
-          // break
-        // }
+        if (count > 30) {
+          break
+        }
       }
     }
 
@@ -97,7 +97,7 @@ class Vehicle {
   seek(target) {
     let desiredVelocity = Vector.subtract(target, this.location).limit(this.maxSpeed)
     let steeringForce = desiredVelocity.subtract(this.velocity).limit(this.maxForce)
-    this.applyForce(steeringForce)
+    this.applyForce(steeringForce.multiplyAll(0.3))
   }
 
   applyForce(force) {

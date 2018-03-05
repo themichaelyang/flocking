@@ -2,7 +2,7 @@ function init(state) {
   state.mouseLocation = {x: window.innerWidth / 2, y: window.innerHeight / 2}
   state.boids = []
   for (let i = 0; i < 500; i++) {
-    state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.05 + (Math.random() * 0.05), Math.random() * 3 + 3))
+    state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.05 + (Math.random() * 0.05), Math.random() * 3 + 2))
     // state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.1, 3))
   }
 
