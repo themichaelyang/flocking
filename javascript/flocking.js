@@ -5,6 +5,14 @@ function init(state) {
     state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.05 + (Math.random() * 0.05), Math.random() * 3 + 3))
     // state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.1, 3))
   }
+
+  window.addEventListener('mousedown', (event) => {
+    state.mouseDown = true
+  })
+
+  window.addEventListener('mouseup', (event) => {
+    state.mouseDown = false
+  })
 }
 
 function draw(state) {
@@ -17,16 +25,34 @@ function update(state) {
   flock(state.boids, 30)
 
   for (let boid of state.boids) {
-    boid.seek(state.mouseLocation)
+    if (state.mouseDown) {
+      boid.seek(state.mouseLocation)
+    }
     boid.update()
+    wrap(boid)
   }
 
   return state
 }
 
+function wrap(boid) {
+  if (boid.location.x < 0) {
+    boid.location.x = window.innerWidth
+  }
+  if (boid.location.y < 0) {
+    boid.location.y = window.innerHeight
+  }
+  if (boid.location.x > window.innerWidth) {
+    boid.location.x = 0
+  }
+  if (boid.location.y > window.innerHeight) {
+    boid.location.y = 0
+  }
+}
+
 function flock(boids, distance) {
   for (let boid of boids) {
     boid.separate(boids, distance)
-    boid.align(boids, distance)
+    boid.align(boids, distance)s
   }
 }

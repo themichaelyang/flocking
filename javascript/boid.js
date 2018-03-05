@@ -85,7 +85,7 @@ class Vehicle {
     this.velocity.add(this.acceleration)
                   // .normalize()
                   // .multiplyAll(this.maxSpeed)
-                 // .limit(this.maxSpeed)
+                 .limit(this.maxSpeed)
     this.location.add(this.velocity)
     this.direction = this.velocity.toAngle()
     this.acceleration.reset()
