@@ -1,8 +1,9 @@
 function init(state) {
   state.mouseLocation = {x: window.innerWidth / 2, y: window.innerHeight / 2}
   state.boids = []
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 500; i++) {
     state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.05 + (Math.random() * 0.05), Math.random() * 3 + 3))
+    // state.boids.push(new Vehicle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 0, 1, 0.1, 3))
   }
 }
 
@@ -13,7 +14,7 @@ function draw(state) {
 }
 
 function update(state) {
-  flock(state.boids, 50)
+  flock(state.boids, 30)
 
   for (let boid of state.boids) {
     boid.seek(state.mouseLocation)
@@ -26,5 +27,6 @@ function update(state) {
 function flock(boids, distance) {
   for (let boid of boids) {
     boid.separate(boids, distance)
+    boid.align(boids, distance)
   }
 }
