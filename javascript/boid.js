@@ -1,6 +1,6 @@
 // consider drawing them as lines and scaling based on velocity
 class Vehicle {
-  constructor(x, y, direction, mass, maxForce, maxSpeed) {
+  constructor(x, y, direction, mass, maxForce, maxSpeed, color) {
     this.location = new Vector(x, y)
     this.direction = 0
     this.velocity = new Vector(0, 0)
@@ -8,6 +8,7 @@ class Vehicle {
     this.mass = mass
     this.maxForce = maxForce
     this.maxSpeed = maxSpeed
+    this.color = color
   }
 
   separate(boids, distance) {
