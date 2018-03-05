@@ -26,7 +26,7 @@ function boidToColor(boid) {
 }
 
 function update(state) {
-  flock(state.boids, 50)
+  flock(state.boids, 20)
 
   for (let boid of state.boids) {
     if (state.mouseDown) {
@@ -58,5 +58,6 @@ function flock(boids, distance) {
   for (let boid of boids) {
     boid.separate(boids, distance)
     boid.align(boids, distance)
+    boid.cohere(boids, distance)
   }
 }

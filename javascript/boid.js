@@ -38,7 +38,7 @@ class Vehicle {
       let steer = Vector.subtract(total, this.velocity)
       steer.limit(this.maxForce)
 
-      this.applyForce(steer.multiplyAll(0.5))
+      this.applyForce(steer.multiplyAll(0.25))
       // return steer
     }
     // else {
@@ -59,10 +59,32 @@ class Vehicle {
     }
 
     if (count > 0) {
+      total.divideAll(count)
       let steer = Vector.subtract(total, this.velocity)
       steer.limit(this.maxForce)
 
       this.applyForce(steer.multiplyAll(0.4))
+    }
+
+  }
+
+  cohere(boids, distance) {
+    let cohesion = new Vector(0, 0)
+    let total = new Vector(0, 0)
+    let count = 0
+
+    for (let other of boids) {
+      if (this !== other && this.distanceTo(other.location) <= distance) {
+        total.add(other.location)
+        count++
+      }
+    }
+
+    if (count > 0) {
+      total.divideAll(count)
+      let steer = Vector.subtract(total, this.velocity)
+      steer.limit(this.maxForce)
+      this.applyForce(steer.multiplyAll(0.25))
     }
   }
 
