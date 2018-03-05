@@ -26,7 +26,7 @@ function boidToColor(boid) {
 }
 
 function update(state) {
-  flock(state.boids, 30)
+  flock(state.boids, 50)
 
   for (let boid of state.boids) {
     if (state.mouseDown) {

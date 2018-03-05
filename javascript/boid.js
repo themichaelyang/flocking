@@ -62,7 +62,7 @@ class Vehicle {
       let steer = Vector.subtract(total, this.velocity)
       steer.limit(this.maxForce)
 
-      this.applyForce(steer.multiplyAll(1))
+      this.applyForce(steer.multiplyAll(0.4))
     }
   }
 
